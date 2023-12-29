@@ -1,22 +1,49 @@
 public class FilterShortStrings {
     public static void main(String[] args) {
-        // TODO Example arrays
+        // Example arrays
+        String[] array1 = {"Hello", "2", "world", ":-)"};
+        String[] array2 = {"1234", "1567", "-2", "computer science"};
+        String[] array3 = {"Russia", "Denmark", "Kazan"};
 
-        // TODO Processing and printing the results
+        // Processing and printing the results
+        System.out.println("Result for array1: " + arrayToString(filterStrings(array1)));
+        System.out.println("Result for array2: " + arrayToString(filterStrings(array2)));
+        System.out.println("Result for array3: " + arrayToString(filterStrings(array3)));
     }
 
     public static String[] filterStrings(String[] input) {
-        // TODO Count short strings
+        // Count short strings
+        int count = 0;
+        for (String s : input) {
+            if (s.length() <= 3) {
+                count++;
+            }
+        }
 
-        // TODO Create a new array to hold short strings
+        // Create a new array to hold short strings
+        String[] result = new String[count];
 
-        // TODO Fill the new array
+        // Fill the new array
+        int index = 0;
+        for (String s : input) {
+            if (s.length() <= 3) {
+                result[index++] = s;
+            }
+        }
 
-        return null;
+        return result;
     }
 
     public static String arrayToString(String[] array) {
-        // TODO convert array to String
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append("\"").append(array[i]).append("\"");
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
